@@ -4,9 +4,6 @@
 [submodule "site/plugins/kirby-panelmodifications"]
 	path = admin/site/plugins/kirby-panelmodifications
 	url = https://github.com/moritzebeling/kirby-panelmodifications.git
-[submodule "site/plugins/kirby-headless"]
-	path = admin/site/plugins/kirby-headless
-	url = git@github.com:moritzebeling/kirby-headless.git
 [submodule "site/plugins/kirbytext-external-links"]
 	path = admin/site/plugins/kirbytext-external-links
 	url = git@github.com:moritzebeling/kirbytext-external-links.git
