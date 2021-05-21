@@ -1,15 +1,14 @@
-export async function load( path ){
+export async function load( path ) {
+	const url = `/json/${path}`;
+	console.log(`load ${url}`);
 
-    const url = `/json/${path}`;
-    console.log( url );
+	const res = await fetch( url );
+	const data = await res.json();
 
-    const res = await fetch( url );
-
-    const data = await res.json();
-
-    if (res.ok) {
-        return data;
-    } else {
-        throw new Error(data);
-    }
+	if (res.status === 200) {
+		console.log( data.data );
+		return data.data;
+	} else {
+		throw new Error(data);
+	}
 }

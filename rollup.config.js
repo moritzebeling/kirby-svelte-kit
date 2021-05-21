@@ -1,81 +1,132 @@
+import path from 'path';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
+import url from '@rollup/plugin-url';
 import sveltePreprocess from 'svelte-preprocess';
 import svelte from 'rollup-plugin-svelte';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import livereload from 'rollup-plugin-livereload';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import scss from 'rollup-plugin-scss';
+import config from 'sapper/config/rollup.js';
+import pkg from './package.json';
 
-const production = !process.env.ROLLUP_WATCH;
+const mode = process.env.NODE_ENV;
+const dev = mode === 'development';
+const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-function serve() {
-	let server;
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
-	function toExit() {
-		if (server) server.kill(0);
-	}
-
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
-
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
-}
+const preprocess = sveltePreprocess({
+	defaults: {
+		style: 'scss'
+	},
+	scss: {
+		includePaths: ['src/styles'],
+		prependData: `@import './variables';`,
+	},
+	postcss: {
+		plugins: [require('autoprefixer')],
+	},
+});
 
 export default {
-	input: 'src/main.js',
-	output: {
-		sourcemap: !production,
-		format: 'iife',
-		name: 'app',
-		file: 'public/build/bundle.js'
-	},
-	plugins: [
-		svelte({
-			compilerOptions: {
-				// do run-time checks when not in production
-				dev: !production
-			},
-			preprocess: sveltePreprocess({
-				defaults: {
-					style: 'scss'
-				},
-				scss: {
-					// relative to root
-					prependData: `@import 'src/scss/_mixins.scss';`
-				},
+	client: {
+		input: config.client.input(),
+		output: config.client.output(),
+		plugins: [
+			replace({
+				'process.browser': true,
+				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
-		}),
+			svelte({
+				dev,
+				hydratable: true,
+				emitCss: true,
+				preprocess,
+			}),
+			url({
+				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				publicPath: '/client/'
+			}),
+			resolve({
+				browser: true,
+				dedupe: ['svelte']
+			}),
+			commonjs(),
 
-		scss({
-			output: true,
-			outputStyle: "compressed",
-			sourceMapEmbed: !production,
-		}),
+			legacy && babel({
+				extensions: ['.js', '.mjs', '.html', '.svelte'],
+				babelHelpers: 'runtime',
+				exclude: ['node_modules/@babel/**'],
+				presets: [
+					['@babel/preset-env', {
+						targets: '> 0.25%, not dead'
+					}]
+				],
+				plugins: [
+					'@babel/plugin-syntax-dynamic-import',
+					['@babel/plugin-transform-runtime', {
+						useESModules: true
+					}]
+				]
+			}),
 
-		resolve({
-			browser: true,
-			dedupe: ['svelte']
-		}),
-		commonjs(),
+			!dev && terser({
+				module: true
+			})
+		],
 
-		// in dev, run `npm run start` once the bundle has been generated
-		!production && serve(),
+		preserveEntrySignatures: false,
+		onwarn,
+	},
 
-		// watch `public` directory in dev
-		!production && livereload('public/build'),
+	server: {
+		input: config.server.input(),
+		output: config.server.output(),
+		plugins: [
+			replace({
+				'process.browser': false,
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			svelte({
+				generate: 'ssr',
+				hydratable: true,
+				dev,
+				preprocess,
+			}),
+			url({
+				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				publicPath: '/client/',
+				emitFiles: false // already emitted by client build
+			}),
+			resolve({
+				dedupe: ['svelte']
+			}),
+			commonjs()
+		],
+		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
-		// build and minify
-		production && terser()
-	],
-	watch: {
-		clearScreen: false
+		preserveEntrySignatures: 'strict',
+		onwarn,
+	},
+
+	serviceworker: {
+		input: config.serviceworker.input(),
+		output: config.serviceworker.output(),
+		plugins: [
+			resolve(),
+			replace({
+				'process.browser': true,
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			commonjs(),
+			!dev && terser()
+		],
+
+		preserveEntrySignatures: false,
+		onwarn,
 	}
 };
