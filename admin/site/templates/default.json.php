@@ -1,14 +1,12 @@
 <?php
 
-$json = [];
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
 
-foreach($site->children() as $item) {
-
-  $json[] = [
-    'url'   => (string)$item->url(),
-    'title' => (string)$item->title(),
-  ];
-
-}
+$json = [
+  'url' => (string)$page->url(),
+  'title' => (string)$page->title(),
+  'text' => (string)$page->text()->kt(),
+];
 
 echo json_encode($json);
