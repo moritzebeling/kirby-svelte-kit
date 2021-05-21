@@ -1,0 +1,4 @@
+$green: #0f0;
+@mixin border {
+	border: 10px solid $green;
+}
