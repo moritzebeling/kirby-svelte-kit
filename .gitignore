@@ -1,7 +1,6 @@
 # Development
 # ------------
 
-/public/build/*
 node_modules
 vendor
 
@@ -15,38 +14,3 @@ vendor
 
 Icon
 .DS_Store
-
-# Temporary files
-# ---------------
-
-/public/media/*
-!/public/media/index.html
-.lock
-
-# -------------SECURITY-------------
-# NEVER publish these files via Git!
-# -------------SECURITY-------------
-
-/storage/*
-
-# Cache Files
-# ---------------
-
-/storage/cache/*
-!/storage/cache/index.html
-
-# Accounts
-# ---------------
-
-/storage/accounts/*
-!/storage/accounts/index.html
-
-# Sessions
-# ---------------
-
-/storage/sessions/*
-!/storage/sessions/index.html
-
-# License
-# ---------------
-/site/config/.license
