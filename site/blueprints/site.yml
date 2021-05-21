@@ -1,0 +1,25 @@
+title: Site
+
+tabs:
+
+  index:
+    label: Index
+    icon: dashboard
+
+    columns:
+
+      - width: 1/2
+        sections:
+
+          listed:
+            extends: sections/pages
+            status: listed
+
+      - width: 1/2
+        sections:
+
+          unlisted:
+            extends: sections/pages
+            status: unlisted
+
+  meta: tabs/meta

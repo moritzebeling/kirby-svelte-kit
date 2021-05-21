@@ -1,0 +1,30 @@
+title: Editor
+description:
+  en: No language and user settings
+  de: Kann keine Sprach- oder Nutzer-Einstellungen machen
+
+permissions:
+
+  access:
+    panel: true
+    site: true
+    settings: false
+    users: true
+
+  files:
+    *: true
+
+  languages:
+    *: false
+
+  pages:
+    *: true
+
+  site:
+    *: true
+
+  user:
+    *: true
+
+  users:
+    *: false

@@ -1,0 +1,25 @@
+title: Image
+
+fields:
+
+  title:
+    label:
+      en: Title/Alt-Text
+      de: Titel/Alt-Text
+    type: text
+    width: 1/2
+    placeholder: '{{ file.filename }}'
+
+  credits:
+    label: Credits
+    type: text
+    before: '©'
+    translate: false
+    width: 1/2
+
+  description:
+    extends: fields/description
+    label:
+      en: Image caption
+      de: Bildbeschreibung
+    maxlength: 300
