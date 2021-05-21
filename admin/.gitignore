@@ -19,8 +19,8 @@ Icon
 # Temporary files
 # ---------------
 
-/public/media/*
-!/public/media/index.html
+/media/*
+!/media/index.html
 .lock
 
 # -------------SECURITY-------------

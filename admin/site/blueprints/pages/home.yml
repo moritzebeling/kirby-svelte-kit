@@ -1,22 +1,24 @@
-title:
-  en: Home
-  de: Startseite
+title: Home
 icon: globe
 
 options:
+  changeSlug: false
   changeStatus: false
+  delete: false
   duplicate: false
 
-fields:
+columns:
 
-  showMessage:
-    type: toggle
-    label: Show Message
-    text:
-      - "No"
-      - "Yes, show Announcement"
+  content:
+    width: 2/3
+    fields:
 
-  message:
-    type: text
-    when:
-      showMessage: true
+      text: fields/markdown
+
+  sidebar:
+    width: 1/3
+    sections:
+
+      image: sections/image
+
+      files: sections/files

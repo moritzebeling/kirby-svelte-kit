@@ -1,0 +1,23 @@
+title: Default page
+
+status:
+  draft: Draft
+  listed: Published
+
+options:
+  changeSlug: false
+  changeStatus: false
+  delete: false
+  duplicate: false
+
+preset: pages
+
+drafts:
+  headline: Drafts
+  extends: sections/pages
+  create: post
+
+listed:
+  headline: Drafts
+  extends: sections/pages
+  create: post

@@ -1,5 +1,5 @@
-type: files
 headline: Uploads
+type: files
 layout: list
 empty:
   en: No files uploaded yet

@@ -12,14 +12,9 @@ tabs:
         sections:
 
           listed:
+            headline: Pages
             extends: sections/pages
             status: listed
-
-      - width: 1/2
-        sections:
-
-          unlisted:
-            extends: sections/pages
-            status: unlisted
-
-  meta: tabs/meta
+            create: false
+            sortable: false
+            # info: "{{ page.children.listed.count }}"

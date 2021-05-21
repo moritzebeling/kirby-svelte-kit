@@ -1,14 +1,8 @@
-title: Default page
+title: Post
 
 status:
   draft: Draft
   listed: Published
-
-options:
-  changeSlug: false
-  changeStatus: false
-  delete: false
-  duplicate: false
 
 columns:
 
