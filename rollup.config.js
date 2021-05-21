@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import url from '@rollup/plugin-url';
-import sveltePreprocess from 'svelte-preprocess';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
@@ -19,33 +18,23 @@ const onwarn = (warning, onwarn) =>
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
 
-const preprocess = sveltePreprocess({
-	defaults: {
-		style: 'scss'
-	},
-	scss: {
-		includePaths: ['src/styles'],
-		prependData: `@import './variables';`,
-	},
-	postcss: {
-		plugins: [require('autoprefixer')],
-	},
-});
-
 export default {
 	client: {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
-				dev,
-				hydratable: true,
-				emitCss: true,
-				preprocess,
+				compilerOptions: {
+					dev,
+					hydratable: true
+				}
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -88,14 +77,19 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': false,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
-				generate: 'ssr',
-				hydratable: true,
-				dev,
-				preprocess,
+				compilerOptions: {
+					dev,
+					generate: 'ssr',
+					hydratable: true
+				},
+				emitCss: false
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -108,7 +102,6 @@ export default {
 			commonjs()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
@@ -119,13 +112,15 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			commonjs(),
 			!dev && terser()
 		],
-
 		preserveEntrySignatures: false,
 		onwarn,
 	}

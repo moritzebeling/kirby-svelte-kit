@@ -1,8 +1,8 @@
 <?php
 
-require 'kirby/vendor/autoload.php';
+$root = 'admin';
 
-$admin = 'admin';
+require 'kirby/vendor/autoload.php';
 
 $kirby = new Kirby(
     [
@@ -10,9 +10,9 @@ $kirby = new Kirby(
             'index'    => __DIR__,
             'base'     => $base    = dirname(__DIR__),
             'content'  => $base . '/content',
-            'site'     => $base . '/'.$admin.'/site',
-            'assets'   => $base . '/'.$admin.'/assets',
-            'storage'  => $storage = $base . '/'.$admin.'/storage',
+            'site'     => $base . '/'.$root.'/site',
+            'assets'   => $base . '/'.$root.'/assets',
+            'storage'  => $storage = $base . '/'.$root.'/storage',
             'accounts' => $storage . '/accounts',
             'cache'    => $storage . '/cache',
             'sessions' => $storage . '/sessions',

@@ -1,8 +1,17 @@
+# Build
+# ------------
+
+__sapper__
+/__sapper__/
+
 # Development
 # ------------
 
 node_modules
+/node_modules/
 vendor
+yarn-error.log
+/src/node_modules/@sapper/
 
 # Content
 # ------------
