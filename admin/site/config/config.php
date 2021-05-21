@@ -12,6 +12,8 @@ return [
 		],
 	],
 
+	'frontendUrl' => 'localhost:3000',
+
 	'smartypants' => true,
 
 	'thumbs' => [

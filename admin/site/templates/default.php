@@ -1,1 +1,1 @@
-Default template
+Default
