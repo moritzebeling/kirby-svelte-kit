@@ -1,9 +1,19 @@
-# Kirby + Sapper Starterkit
+# Kirby + SvelteKit Monorepo Template
 
-- Start your php server at `admin/`
+## Backend
+PHP, Composer, Kirby
+
+- Pont your host to `admin/`
 ```
 cd admin
 valet link {project}
 ```
 
-- Configure {project}.test as backend host
+- run `composer install` to install Kirby and required plugins
+
+## Frontend
+
+```
+npm install
+npm run dev
+```

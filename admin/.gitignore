@@ -3,7 +3,8 @@
 
 .cache
 node_modules
-vendor
+/kirby
+/vendor
 
 # Content
 # ------------

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "getkirby/cms": "^3.5"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "kirby-cms-path": "kirby"
+    }
+}
