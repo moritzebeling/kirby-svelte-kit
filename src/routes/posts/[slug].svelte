@@ -1,37 +1,38 @@
 <script context="module">
-	import { dev } from '$app/env';
-	const api = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
 
-	// see https://kit.svelte.dev/docs#loading
-	export const load = async ({ page, fetch }) => {
-		const res = await fetch(`${api}${page.path}.json`);
+	export async function load({ page, fetch, session, context }) {
+		const url = `/posts/${page.params.slug}.json`;
+		const res = await fetch(url);
 		if (res.ok) {
-			const content = await res.json();
 			return {
-				props: { content }
+				props: {
+					data: await res.json()
+				}
 			};
 		}
-		const { message } = await res.json();
+		/* TODO: this should output something more helpful */
 		return {
-			error: new Error(message)
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
 		};
-	};
+	}
+
 </script>
 
 <script>
-	export let content;
+	export let data;
 </script>
 
 <svelte:head>
-	<title>{content.title}</title>
+	<title>{data.title}</title>
 </svelte:head>
 
 <div class="todos">
 
-	<h1>{content.title}</h1>
+	<h1>{data.title}</h1>
 
 	<div class="content">
-		{@html content.text}
+		{@html data.text}
 	</div>
 
 </div>

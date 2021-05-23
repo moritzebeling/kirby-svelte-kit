@@ -1,21 +1,22 @@
 <script context="module">
-	import { dev } from '$app/env';
-	const api = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
 
-	// see https://kit.svelte.dev/docs#loading
-	export const load = async ({ page, fetch }) => {
-		const res = await fetch(`${api}${page.path}.json`);
+	export async function load({ page, fetch, session, context }) {
+		const url = `/posts.json`;
+		const res = await fetch(url);
 		if (res.ok) {
-			const posts = await res.json();
 			return {
-				props: { posts }
+				props: {
+					posts: await res.json()
+				}
 			};
 		}
-		const { message } = await res.json();
+		/* TODO: this should output something more helpful */
 		return {
-			error: new Error(message)
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
 		};
-	};
+	}
+
 </script>
 
 <script>
