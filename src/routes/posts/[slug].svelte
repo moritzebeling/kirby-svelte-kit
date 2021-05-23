@@ -31,7 +31,7 @@
 	<title>{data.title}</title>
 </svelte:head>
 
-<div class="todos">
+<section>
 
 	<h1>{data.title}</h1>
 	<p>{data.time}</p>
@@ -40,13 +40,10 @@
 		{@html data.text}
 	</div>
 
-</div>
+</section>
 
 <style>
-	.todos {
+	section {
 		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
-		line-height: 1;
 	}
 </style>

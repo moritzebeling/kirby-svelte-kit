@@ -31,7 +31,7 @@
 	<title>Posts</title>
 </svelte:head>
 
-<div class="todos">
+<section>
 
 	<h1>Posts</h1>
 
@@ -41,13 +41,10 @@
 		{/each}
 	</ul>
 
-</div>
+</section>
 
 <style>
-	.todos {
+	section {
 		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
-		line-height: 1;
 	}
 </style>
