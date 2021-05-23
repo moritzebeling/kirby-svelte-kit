@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e4c9fddee882b17f3a242427bc68f54",
+    "content-hash": "0b098e9135502c0b178c988ec09f6332",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -607,6 +607,44 @@
                 }
             ],
             "time": "2021-04-29T12:25:04+00:00"
+        },
+        {
+            "name": "pju/kirby-webhook-field",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pju-/kirby-webhook-field.git",
+                "reference": "e0ce1be565030e4ce2be0e3c387ca4b3a44d9b2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pju-/kirby-webhook-field/zipball/e0ce1be565030e4ce2be0e3c387ca4b3a44d9b2a",
+                "reference": "e0ce1be565030e4ce2be0e3c387ca4b3a44d9b2a",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1"
+            },
+            "type": "kirby-plugin",
+            "extra": {
+                "installer-name": "webhook-field"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Philip Jonas Ulrich",
+                    "email": "hi@philipjonas.cc"
+                }
+            ],
+            "description": "A Kirby 3 plugin providing a field to easily use webhooks, e.g. for deploying your site to services such as Netlify ",
+            "support": {
+                "issues": "https://github.com/pju-/kirby-webhook-field/issues",
+                "source": "https://github.com/pju-/kirby-webhook-field/tree/master"
+            },
+            "time": "2020-08-09T13:53:08+00:00"
         },
         {
             "name": "psr/log",

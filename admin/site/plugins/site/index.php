@@ -21,7 +21,7 @@ Kirby::plugin('moritzebeling/site', [
             'pattern' => 'sitemap.json',
             'action'  => function() {
 
-                $domain = option('frontendUrl');
+                $domain = option('frontend.url');
 
                 $json = [];
                 foreach(kirby()->site()->index()->listed() as $page) {

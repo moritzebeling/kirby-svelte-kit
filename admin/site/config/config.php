@@ -3,19 +3,18 @@
 date_default_timezone_set('Europe/Berlin');
 
 return [
-	'locale' => 'en_US.utf-8',
+
+	'frontend.url' => 'https://kirby-svelte-kit.netlify.app',
+	'pju.webhook-field.hooks' => [
+		'netlify_deploy' => [
+			'url' => 'https://api.netlify.com/build_hooks/60aa586197bedd414680eed8'
+		]
+	],
 
 	'debug' => true,
 	'whoops' => true,
 
-	'cache' => [
-		'pages' => [
-			'active' => false
-		],
-	],
-
-	'frontendUrl' => 'localhost:3000',
-
+	'locale' => 'en_US.utf-8',
 	'smartypants' => true,
 
 	'thumbs' => [

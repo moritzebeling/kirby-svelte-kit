@@ -18,3 +18,10 @@ tabs:
             create: false
             sortable: false
             # info: "{{ page.children.listed.count }}"
+
+      - width: 1/2
+        fields:
+
+          deploy:
+            type: webhook
+            label: Deploy on Netlify
