@@ -1,5 +1,6 @@
 <script context="module">
-	const api = 'http://schoene-freiheit.test';
+	import { dev } from '$app/env';
+	const api = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
 
 	// see https://kit.svelte.dev/docs#loading
 	export const load = async ({ page, fetch }) => {
