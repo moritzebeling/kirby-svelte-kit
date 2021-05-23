@@ -4,8 +4,8 @@
 
 PHP, Composer, Kirby
 
-- Pont your host to `admin/`
-```
+- Point your local host to `admin`:
+```bash
 cd admin
 valet link {project}
 ```
@@ -14,13 +14,27 @@ valet link {project}
 
 ## Frontend
 
-```
+```bash
 npm install
 npm run dev
 ```
 
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
 ## Deploy
 
-This template is ready to be deployed to Netlify through
+Upload these directories to PHP server:
+- `admin`
+- `build`
+- `content`
+
+Point your public domain to `build`.
+
+You can also deploy to netlify. Settings are made in:
 - `netlify.toml`
 - `@sveltejs/adapter-netlify`

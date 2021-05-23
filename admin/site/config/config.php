@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Europe/Berlin');
+
 return [
 	'locale' => 'en_US.utf-8',
 

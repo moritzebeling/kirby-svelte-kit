@@ -1,8 +1,7 @@
 <script context="module">
 
-	import { browser, dev } from '$app/env';
-	export const hydrate = dev;
-	export const router = browser;
+	import { dev } from '$app/env';
+	export const hydrate = false;
 	export const prerender = true;
 
 	export async function load({ page, fetch, session, context }) {
@@ -35,6 +34,7 @@
 <div class="todos">
 
 	<h1>{data.title}</h1>
+	<p>{data.time}</p>
 
 	<div class="content">
 		{@html data.text}

@@ -44,6 +44,7 @@
 </svelte:head>
 
 <div class="content">
+	<p>{data.time}</p>
 	{@html data.text}
 </div>
 
