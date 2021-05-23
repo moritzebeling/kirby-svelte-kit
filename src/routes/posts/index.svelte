@@ -1,5 +1,10 @@
 <script context="module">
 
+	import { browser, dev } from '$app/env';
+	export const hydrate = dev;
+	export const router = browser;
+	export const prerender = true;
+
 	export async function load({ page, fetch, session, context }) {
 		const url = `/posts.json`;
 		const res = await fetch(url);
