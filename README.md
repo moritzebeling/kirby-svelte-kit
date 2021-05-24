@@ -20,10 +20,10 @@ valet link {project}
 ```
 
 Install Kirby plugins
-- run `composer require {package/id}` to [install kirby plugins](https://getkirby.com/docs/cookbook/setup/composer#using-composer-for-kirby-plugins)
+- run `composer require {package/id}` to [install Kirby plugins](https://getkirby.com/docs/cookbook/setup/composer#using-composer-for-kirby-plugins)
 - add plugin path to `.gitignore`
 
-## Frontend
+## Frontend (SvelteKit)
 
 ```bash
 npm install
@@ -41,6 +41,8 @@ Upload these directories to PHP server:
 and point your admin domain to `admin`.
 
 You can also host a pre-built version of your website on the same server. Run `npm run build`, upload the newly created `build` folder to your server as well and point your public domain to it. Note, that you will have to manually recompile your website in order to reflect any changes to the content.
+
+If you connect this repo to Netlify, everytime you push to the `main` branch, the frontend will be rebuilt using the current state of the content stored in Kirby.
 
 ## Configuration
 
@@ -73,7 +75,7 @@ Read more on [Kirby Webhook Field](https://github.com/pju-/kirby-webhook-field/b
 ## Roadmap
 
 - SCSS
-- Is there a way to directly preview content changes before deploying them? Maybe with Netlify preview builds? Or maybe there is a copy of the complete website in the admin as well, that doesn’t to server side rendering but works like a SPA and fetches fresh content everytime you open it. Maybe redirect empty `{template}.php` to the corresponding page on the frontend?
-- Endpoint status code for errors
-- `sitemap.xmp`
 - Global API endpoint configuration for the frontend
+- Endpoint status code for errors
+- Is there a way to directly preview content changes before deploying them? Maybe with Netlify preview builds? Or maybe there is a copy of the complete website on the admin server as well, that doesn’t do server side rendering but works like a SPA and fetches fresh content everytime you look at it. Maybe redirect empty `{template}.php` to the corresponding page on the frontend?
+- `sitemap.xml`
