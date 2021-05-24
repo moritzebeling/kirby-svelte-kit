@@ -1,3 +1,5 @@
+⚠️ Work in progress... do not use in production!
+
 # Kirby + SvelteKit Monorepo Template
 
 This template provides a starting point for website projects with both a Kirby admin running in the background on some PHP server and a SvelteKit frontend, that can be server side rendered and deployed to services like Netlify.
@@ -67,3 +69,11 @@ Read more on [Kirby Webhook Field](https://github.com/pju-/kirby-webhook-field/b
 ### Frontend
 
 ...wip
+
+## Roadmap
+
+- SCSS
+- Is there a way to directly preview content changes before deploying them? Maybe with Netlify preview builds? Or maybe there is a copy of the complete website in the admin as well, that doesn’t to server side rendering but works like a SPA and fetches fresh content everytime you open it. Maybe redirect empty `{template}.php` to the corresponding page on the frontend?
+- Endpoint status code for errors
+- `sitemap.xmp`
+- Global API endpoint configuration for the frontend
