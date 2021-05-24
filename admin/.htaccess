@@ -25,8 +25,8 @@ Options -Indexes
   RewriteBase /
 
   # force https
-  # RewriteCond %{HTTPS} off
-  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # redirect favicon, sitemap, robots, ....
   RewriteRule ^favicon\.ico$ /assets/favicon/favicon.ico [L]
