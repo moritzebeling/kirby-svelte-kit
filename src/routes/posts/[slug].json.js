@@ -1,10 +1,9 @@
-import { dev } from '$app/env';
-const base = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
+import { config } from '$lib/config';
 
 export async function get( request ) {
 
 	const { slug } = request.params;
-	const url = `${base}/posts/${slug}.json`;
+	const url = `${config.api.base}/posts/${slug}.json`;
 
 	const res = await fetch( url );
 

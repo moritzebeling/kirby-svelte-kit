@@ -1,6 +1,5 @@
-import { dev } from '$app/env';
 import jsonxml from 'jsontoxml';
-const base = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
+import { config } from '$lib/config';
 
 /*
 This is a HACK
@@ -40,7 +39,7 @@ function mapPages( pages ){
 
 export async function get() {
 
-	const url = `${base}/sitemap.json`;
+	const url = `${config.api.base}/sitemap.json`;
 	const res = await fetch( url );
 
 	if (res.ok) {

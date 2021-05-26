@@ -1,9 +1,8 @@
-import { dev } from '$app/env';
-const base = dev ? 'http://kirby-svelte-kit.test' : 'https://headless.moritzebeling.com';
+import { config } from '$lib/config';
 
 export async function get( request ) {
 
-	const url = `${base}/${request.path}`;
+	const url = `${config.api.base}/${request.path}`;
 
 	const res = await fetch( url );
 
