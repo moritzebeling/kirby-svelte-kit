@@ -67,9 +67,5 @@ export async function get() {
 		};
 	}
 
-	return {
-		status: 404,
-		body: 'Page not found'
-	};
-
+	return { status: 404 };
 }

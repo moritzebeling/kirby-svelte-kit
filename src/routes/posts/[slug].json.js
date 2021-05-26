@@ -15,13 +15,5 @@ export async function get( request ) {
 		};
 	}
 
-	/* TODO: this should output something more helpful */
-	return {
-		body : {
-			status: 404,
-			url: url,
-			request: dev ? request : url
-		}
-	};
-
+	return { status: 404 };
 }
