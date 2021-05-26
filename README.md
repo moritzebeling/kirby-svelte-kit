@@ -64,9 +64,9 @@ Read more on [Kirby Webhook Field](https://github.com/pju-/kirby-webhook-field/b
 ```php
 'frontend.url' => 'https://{your-website}.netlify.app',
 'pju.webhook-field.hooks' => [
-    'netlify_deploy' => [
-        'url' => 'https://api.netlify.com/build_hooks/{your-build-hook}'
-    ]
+  'netlify_deploy' => [
+    'url' => 'https://api.netlify.com/build_hooks/{your-build-hook}'
+  ]
 ],
 ```
 
@@ -76,6 +76,5 @@ Read more on [Kirby Webhook Field](https://github.com/pju-/kirby-webhook-field/b
 
 ## Roadmap
 
-- Global API endpoint configuration for the frontend
 - Page transitions
 - Is there a way to directly preview content changes before deploying them? Maybe with Netlify preview builds? Or maybe there is a copy of the complete website on the admin server as well, that doesn’t do server side rendering but works like a SPA and fetches fresh content everytime you look at it. Maybe redirect empty `{template}.php` to the corresponding page on the frontend?
