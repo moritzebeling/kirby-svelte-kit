@@ -43,7 +43,7 @@
 
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		width: 100%;
 	}

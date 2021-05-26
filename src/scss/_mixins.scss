@@ -1,0 +1,95 @@
+/* colors */
+
+$white: #f0f0f0;
+$black: #222222;
+$grey: #e1e1e1;
+$blue: #0079ff;
+$green: #00d098;
+$violet: #ab48ff;
+$yellow: #ffe47a;
+
+$colors: (
+	"white": $white,
+	"black": $black,
+	"grey": $grey,
+	"blue": $blue,
+	"green": $green,
+	"violet": $violet,
+	"yellow": $yellow,
+);
+
+/* fonts */
+
+$regular: 'Arial', sans-serif;
+@mixin regular {
+	font-family: $regular;
+}
+
+$mono: monospace;
+@mixin mono {
+	font-family: $mono;
+}
+
+@mixin bold {
+	font-weight: 600;
+}
+
+@mixin italic {
+	font-style: italic;
+}
+
+/* borders */
+
+$border-width: 2px;
+@mixin border ( $color: currentColor ) {
+	padding-bottom: 0.5rem;
+	border-bottom: $border-width solid $color;
+}
+
+/* typography */
+
+@mixin large {
+	font-size: 2rem;
+	line-height: 1.2;
+}
+
+@mixin medium {
+	font-size: 1.5rem;
+	line-height: 1.4;
+}
+
+@mixin normal {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+@mixin small {
+	font-size: 0.8rem;
+	line-height: 1.4;
+}
+
+@mixin uppercase {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* ui */
+
+@mixin button {
+	border-radius: 2rem;
+	padding: 0.2em 0.7em;
+	@include transition();
+	&[aria-current=page],
+	&:hover {
+		background-color: $yellow;
+		color: $green;
+	}
+}
+
+/* effects */
+
+@mixin transition( $property: color background-color, $duration: 300ms ) {
+	transition-property: $property;
+	transition-duration: $duration;
+	transition-timing-function: ease;
+}

@@ -10,7 +10,7 @@
 	<h1>Home page</h1>
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		display: flex;
 		flex-direction: column;

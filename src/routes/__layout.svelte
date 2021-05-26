@@ -1,6 +1,6 @@
 <script>
 	import Header from '$lib/Header/index.svelte';
-	import '../app.css';
+	import '../scss/global.scss';
 </script>
 
 <Header />
@@ -13,7 +13,7 @@
 	<p>© 2021</p>
 </footer>
 
-<style>
+<style lang="scss">
 	main {
 		flex: 1;
 		display: flex;
@@ -25,7 +25,7 @@
 	}
 
 	footer {
-		background-color: blueviolet;
+		background-color: $violet;
 		padding: 1rem;
 	}
 	footer p {

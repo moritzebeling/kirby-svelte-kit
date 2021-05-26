@@ -11,7 +11,7 @@
 <header>
 	<nav>
 	{#each pages as [path, title]}
-		<a sveltekit:prefetch href={path}>{title}</a>
+		<a aria-current="{$page.path === path ? 'page' : ''}" sveltekit:prefetch href={path}>{title}</a>
 	{/each}
 	</nav>
 </header>
@@ -28,6 +28,9 @@
 		transition: color 0.2s linear;
 	}
 	a:hover {
+		color: var(--accent-color);
+	}
+	a[aria-current=page]{
 		color: var(--accent-color);
 	}
 </style>

@@ -40,7 +40,7 @@
 	{@html data.text}
 </div>
 
-<style>
+<style lang="scss">
 	.content {
 		width: 100%;
 		box-sizing: border-box;

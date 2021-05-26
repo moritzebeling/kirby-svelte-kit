@@ -1,0 +1,22 @@
+@import 'reset';
+@import 'mixins';
+
+html {
+	font-size: 16px;
+	@include regular;
+}
+body {
+	background-color: $white;
+	color: $black;
+	@include normal;
+}
+#svelte {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	> main {
+		flex: 1;
+	}
+}
+
+@import 'helpers';
