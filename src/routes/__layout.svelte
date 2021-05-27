@@ -1,12 +1,25 @@
+<script context="module">
+	export const load = async ({ page }) => ({
+		props: {
+			key: page.path,
+		},
+	})
+</script>
+
 <script>
 	import Header from '$lib/Header/index.svelte';
 	import '../scss/global.scss';
+
+	import PageTransition from "$lib/Components/PageTransition.svelte";
+	export let key;
 </script>
 
 <Header />
 
 <main>
-	<slot />
+	<PageTransition refresh={key}>
+		<slot />
+	</PageTransition>
 </main>
 
 <footer>
@@ -23,7 +36,6 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-
 	footer {
 		background-color: $violet;
 		padding: 1rem;
