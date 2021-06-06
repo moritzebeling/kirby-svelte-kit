@@ -16,7 +16,7 @@
 	</nav>
 </header>
 
-<style>
+<style lang="scss">
 
 	header {
 		padding: 0.5rem 0.5rem;
