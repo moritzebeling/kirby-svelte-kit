@@ -1,5 +1,5 @@
 {
-  "name": "~TODO~",
+  "name": "Kirby/SvelteKit Starter Kit",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -23,9 +23,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/fira-mono": "^4.2.2",
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1",
     "jsontoxml": "^1.0.1"
   }
 }
