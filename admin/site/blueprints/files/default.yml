@@ -1,14 +1,14 @@
 title: Image
 
 accept:
-    extension: jpg, png, jpeg
-    mime: image/jpeg, image/png
-    maxheight: 5000
-    maxwidth: 5000
-    minheight: 500
-    minwidth: 500
-    maxsize: 5000000 # 5 MB
-    minsize: 200000 # 200 KB
+  extension: jpg, png, jpeg
+  mime: image/jpeg, image/png
+  maxheight: 5000
+  maxwidth: 5000
+  minheight: 500
+  minwidth: 500
+  maxsize: 5000000 # 5 MB
+  minsize: 200000 # 200 KB
 
 fields:
 
