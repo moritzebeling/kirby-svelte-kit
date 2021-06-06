@@ -2,6 +2,17 @@
 
 date_default_timezone_set('Europe/Berlin');
 
+Str::$language = [
+	'ä' => 'ae',
+	'ö' => 'oe',
+	'ü' => 'ue',
+	'ß' => 'ss',
+	't’s' => 'ts',
+	'n’t' => 'nt',
+	't\'s' => 'ts',
+	'n\'t' => 'nt',
+];
+
 return [
 
 	'frontend.url' => 'https://kirby-svelte-kit.netlify.app',
