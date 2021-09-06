@@ -1,6 +1,6 @@
 {
     "require": {
-        "getkirby/cms": "^3.5",
+        "getkirby/cms": "^3.5.7",
         "pju/kirby-webhook-field": "^1.1"
     },
     "config": {
