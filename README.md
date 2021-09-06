@@ -25,6 +25,11 @@ Install Kirby plugins
 
 When building the content structure in Kirby, don’t try to mirror the exact page
 
+Update
+```
+composer update getkirby/cms
+```
+
 ## Frontend (SvelteKit)
 
 ```bash
